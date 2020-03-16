@@ -4,7 +4,7 @@
 		{
 			"type": "Feature",
 			"properties": {
-				"region_name": "Xin Jiang"
+				"region_name": "Xinjiang"
 			},
 			"geometry": {
 				"type": "Polygon",
@@ -621,7 +621,7 @@
 		{
 			"type": "Feature",
 			"properties": {
-				"region_name": "Xi Zang"
+				"region_name": "Xizang"
 			},
 			"geometry": {
 				"type": "Polygon",
@@ -1222,7 +1222,7 @@
 		{
 			"type": "Feature",
 			"properties": {
-				"region_name": "Nei Meng Gu"
+				"region_name": "Nei meng gu"
 			},
 			"geometry": {
 				"type": "Polygon",
