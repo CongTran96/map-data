@@ -1,5 +1,5 @@
 // import * as data from './data.json';
-const fileName = 'indo-north.json';
+const fileName = 'indo-south.json';
 const data = require('../raw-data/' + fileName);
 // const prev_coutries = require('./prev_coutries.json');
 const fs = require('fs');
@@ -146,6 +146,7 @@ function main() {
 
     const geoJson = mergeAllRegionsToOne(data);
     // const regions = mergeRegions(data);
+    console.log('geoJson:', geoJson);
     saveFile(fileName, geoJson);
 }
 

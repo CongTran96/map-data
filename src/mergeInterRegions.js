@@ -22,25 +22,29 @@ const main = () => {
         // console.log('feature:', feature);
         const feature = rawData.features[i];
 
-        if (!feature.properties.name) {
-            finalGeo.features.push(feature);
-        } else {
-            coordinates.push(feature.geometry.coordinates)
-        }
+        // if (!feature.properties.name) {
+        //     finalGeo.features.push(feature);
+        // } else {
+        //     coordinates.push(feature.geometry.coordinates)
+        // }
+
+        coordinates.push(feature.geometry.coordinates)
     }
 
-    let featureIndexWillMerge = 0;
-    for (let i = 0; i < finalGeo.features.length; i++) {
-        const feature = finalGeo.features[i];
+    // let featureIndexWillMerge = 0;
+    // for (let i = 0; i < finalGeo.features.length; i++) {
+    //     const feature = finalGeo.features[i];
 
-        if (feature.properties[regionPropertiesName] === regionWillMerge) {
-            featureIndexWillMerge = i;
-        }
-    }
+    //     if (feature.properties[regionPropertiesName] === regionWillMerge) {
+    //         featureIndexWillMerge = i;
+    //     }
+    // }
 
-    const featureWillMerge = finalGeo.features[featureIndexWillMerge];
+    // const featureWillMerge = finalGeo.features[featureIndexWillMerge];
 
-    featureWillMerge.geometry.coordinates = featureWillMerge.geometry.coordinates.concat(coordinates);
+    // featureWillMerge.geometry.coordinates = featureWillMerge.geometry.coordinates.concat(coordinates);
+
+
     helper.saveFile('finalGeo.json', finalGeo);
 }
 
