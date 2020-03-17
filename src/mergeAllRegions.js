@@ -6,7 +6,7 @@ const fs = require('fs');
 
 function saveFile(name, json) {
     fs.writeFile('../final-data/' + name, JSON.stringify(json), 'utf8', function () {
-        console.log('save file successful');
+        console.log('save file'  + name  + 'to final-data directory success');
     });
 }
 
