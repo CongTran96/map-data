@@ -1,5 +1,5 @@
 // import * as data from './data.json';
-const fileName = 'indo-south.json';
+const fileName = 'kazakhstan.json';
 const data = require('../raw-data/' + fileName);
 // const prev_coutries = require('./prev_coutries.json');
 const fs = require('fs');
