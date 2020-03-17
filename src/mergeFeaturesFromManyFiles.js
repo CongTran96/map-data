@@ -4,6 +4,7 @@ const data = require('../raw-data/' + fileName);
 // const prev_coutries = require('./prev_coutries.json');
 const fs = require('fs');
 
+// raw geoInput
 const india = require('../raw-data/ind.v2.json');
 const indo = require('../raw-data/indo.v2.json');
 const philip = require('../raw-data/philip.v2.json');
