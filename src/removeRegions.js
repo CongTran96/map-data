@@ -1,14 +1,26 @@
 // import * as data from './data.json';
-const fileName = 'geo_prod.json';
+const fileName = 'geo_v4.json';
 const data = require('../raw-data/' + fileName);
 // const prev_coutries = require('./prev_coutries.json');
 const fs = require('fs');
 
-const regionsNameWillRemove = ['China', 'India', 'Philippines', 'Indonesia'];
+const regionsNameWillRemove = [
+    // 'Indonesia(Gorontalo)', 
+    // 'Indonesia ( Yogyakarta)', 
+    // 'Indonesia (Banten)', 
+    // 'Indonesia (North Maluku)',
+    // 'Indonesia (DKI JAKARTA)',
+    // 'Indonesia (Pangkalpinang)',
+    // 'Indonesia (Across Sumatra)',
+    // 'Indonesia (Bengkulu)',
+    // 'Indonesia (Aceh)',
+    // 'Indonesia (Bandar Lampung)',
+    // 'Indonesia (West Papua)'
+];
 
 function saveFile(name, json) {
     fs.writeFile('../final-data/' + name, JSON.stringify(json), 'utf8', function () {
-        console.log('save file'  + name  + 'to final-data directory success');
+        console.log('save file'  + name  + ' to final-data directory success');
     });
 }
 
@@ -25,7 +37,7 @@ function removeRegions(geoJson) {
     for (let i = 0; i < geoJson.features.length; i++) {
         const feature = geoJson.features[i];
 
-        if (feature.properties && !regionsNameWillRemove.includes(feature.properties.region_name)) {
+        if (feature.properties && !regionsNameWillRemove.includes(feature.properties.region_name) && feature.properties.ioc === "ID") {
             newGeoJson.features.push(feature);
         }
     }
