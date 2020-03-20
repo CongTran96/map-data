@@ -580,13 +580,7 @@
             ]
         },
         "properties": {
-            "ID": 19,
-            "kode": 14,
-            "Propinsi": "RIAU",
-            "SUMBER": "Peta Dasar BAKOSURTANAL Skala 1 : 250.000",
-            "id": "1764",
-            "region_name": "Indonesia (Across Sumatra)",
-            "animals": [25],
+            "region_name": "Indonesia (Central Sumatra)",
             "ioc": "ID",
             "is_country": false
         }

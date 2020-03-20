@@ -58,6 +58,13 @@ function mergeFeaturesBaseRegion(allFeatures) {
     return firstRegion;
 }
 
+const initGeoJson = () => {
+    return {
+        type: "FeatureCollection",
+        features: []
+    };
+}
+
 function mergeRegions(geoJson) {
     var features = [];
     const regions = groupRegions(geoJson);
@@ -71,9 +78,9 @@ function mergeRegions(geoJson) {
     return geoJson;
 }
 
-function mergeAllRegionsToOne(geoJson) {
-    const firstRegion = geoJson.features[0];
-    const allFeatures = geoJson.features;
+function mergeAllRegionsToOne(features) {
+    const firstRegion = JSON.parse(JSON.stringify(features[0]));;
+    const allFeatures = JSON.parse(JSON.stringify(features));
     
     // prepare region to multi polygone
     if (firstRegion.geometry.type != "MultiPolygon") {
@@ -89,65 +96,19 @@ function mergeAllRegionsToOne(geoJson) {
             firstRegion.geometry.coordinates.push(feature.geometry.coordinates);
         }
     }
-    geoJson.features = [firstRegion];
 
-    return geoJson;
+    return firstRegion;
 }
 
 function main() {
+    let geoJson = initGeoJson;
+    geoJson.features = [mergeAllRegionsToOne(data)];
 
-    // const listCoutryIocs = [
-    //     'NP',
-    //     'MY',
-    //     'TH',
-    //     'KH',
-    //     'LA',
-    //     'PK',
-    //     'AF',
-    //     'RU',
-    //     'MN',
-    //     'BT',
-    //     'LK',
-    //     'SG',
-    //     'BN',
-    //     'BD',
-    //     'KZ',
-    //     'UZ',
-    //     'PG'
-    // ];
-
-    // const add_coutries = [
-    //     china,
-    //     ind,
-    //     indo,
-    //     myanmar,
-    //     philip,
-    //     vn,
-    //     japan,
-    //     korea,
-    //     timor,
-    //     iran
-    // ];
-
-    // const used_features = prev_coutries.features.filter(feature => {
-    //     return feature.properties.ioc && listCoutryIocs.includes(feature.properties.ioc);
-    // });
-
-    // prev_coutries.features = used_features;
-
-    // add_coutries.forEach(coutry => {
-    //     prev_coutries.features = prev_coutries.features.concat(coutry.features)
-    // });
-
-    // prev_coutries.features = prev_coutries.features.map(feature => {
-    //     feature.properties.animals = [];
-    //     return feature
-    // })
-
-    const geoJson = mergeAllRegionsToOne(data);
     // const regions = mergeRegions(data);
     console.log('geoJson:', geoJson);
     saveFile(fileName, geoJson);
 }
 
-main();
+// main();
+
+exports.mergeAllRegionsToOne = mergeAllRegionsToOne;
