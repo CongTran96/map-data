@@ -3,7 +3,7 @@ const removeRegions = require('./src/removeRegions').removeRegions;
 const mergeAllRegions = require('./src/mergeAllRegions').mergeAllRegionsToOne;
 const helper = require('./src/helper');
 
-const fileName = 'geo_v4.json';
+const fileName = 'geo_v2.json';
 const data = require('./raw-data/' + fileName);
 
 const initGeoJson = () => {
@@ -15,46 +15,48 @@ const initGeoJson = () => {
 
 let groupFeatures = [
     {
-        groupNames: 'Indonesia North',
+        groupNames: 'Indonesia Central Sumatra',
         region_names: [
-            'Indonesia (North Sumatra)', 
-            'Indonesia (Aceh)'],
+            'Indonesia (Central Sumatra)',
+            'West Sumatra'
+        ],
         features: []
     },
     {
-        groupNames: 'Indonesia Center',
+        groupNames: 'Indonesia (West Java)',
         region_names: [
-            'Indonesia (Across Central Sumatra)', 
-            'Indonesia (Across Sumatra)'],
+            'Indonesia (West Java)', 
+            'Indonesia Jakasta'
+        ],
         features: []
     },
     {
-        groupNames: 'Indonesia South',
+        groupNames: 'Indonesia (Papua)',
         region_names: [
-            'Indonesia (South Sumatra)', 
-            'Indonesia (Pangkalpinang)', 
-            'Indonesia (Bengkulu)', 
-            'Indonesia (Bandar Lampung)'],
+            'Indonesia (Papua)', 
+            'Indonesia west Papue'
+        ],
+        features: []
+    },
+    {
+        groupNames: 'Indonesia (North Sulawesi)',
+        region_names: [
+            'Indonesia (North Sulawesi)', 
+            'Indonesia Gorontalo'
+        ],
         features: []
     }
 ];
 
 const regionsNameWillRemove = [
-    'Indonesia( Gorontalo)', 
-    'Indonesia ( Yogyakarta)', 
-    'Indonesia (Banten)', 
-    'Indonesia (North Maluku)',
-    'Indonesia (DKI JAKARTA)',
-    'Indonesia (Pangkalpinang)',
-    'Indonesia (Across Sumatra)',
-    'Indonesia (Across Central Sumatra)',
-    'Indonesia (Bengkulu)',
-    'Indonesia (Aceh)',
-    'Indonesia (Bandar Lampung)',
-    'Indonesia (West Papua)',
-    'Indonesia (North Sumatra)',
-    'Indonesia (South Sumatra)',
-    'Indonesia (West Sumatra)'
+    'Indonesia (Central Sumatra)',
+    'West Sumatra',
+    'Indonesia (West Java)',
+    'Indonesia Jakasta',
+    'Indonesia (Papua)',
+    'Indonesia west Papue',
+    'Indonesia (North Sulawesi)',
+    'Indonesia Gorontalo'
 ];
 
 function main() {

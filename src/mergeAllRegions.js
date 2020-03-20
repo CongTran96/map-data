@@ -1,15 +1,3 @@
-// import * as data from './data.json';
-const fileName = 'kazakhstan.json';
-const data = require('../raw-data/' + fileName);
-// const prev_coutries = require('./prev_coutries.json');
-const fs = require('fs');
-
-function saveFile(name, json) {
-    fs.writeFile('../final-data/' + name, JSON.stringify(json), 'utf8', function () {
-        console.log('save file'  + name  + 'to final-data directory success');
-    });
-}
-
 function groupRegions(geoJson) {
     const regions = {};
     const features = geoJson.features;
@@ -58,13 +46,6 @@ function mergeFeaturesBaseRegion(allFeatures) {
     return firstRegion;
 }
 
-const initGeoJson = () => {
-    return {
-        type: "FeatureCollection",
-        features: []
-    };
-}
-
 function mergeRegions(geoJson) {
     var features = [];
     const regions = groupRegions(geoJson);
@@ -99,16 +80,5 @@ function mergeAllRegionsToOne(features) {
 
     return firstRegion;
 }
-
-function main() {
-    let geoJson = initGeoJson;
-    geoJson.features = [mergeAllRegionsToOne(data)];
-
-    // const regions = mergeRegions(data);
-    console.log('geoJson:', geoJson);
-    saveFile(fileName, geoJson);
-}
-
-// main();
 
 exports.mergeAllRegionsToOne = mergeAllRegionsToOne;
