@@ -3,7 +3,7 @@ const removeRegions = require('./src/removeRegions').removeRegions;
 const mergeAllRegions = require('./src/mergeAllRegions').mergeAllRegionsToOne;
 const helper = require('./src/helper');
 
-const fileName = 'geo_v2.json';
+const fileName = 'geo.json';
 const data = require('./raw-data/' + fileName);
 
 const initGeoJson = () => {
@@ -49,28 +49,27 @@ let groupFeatures = [
 ];
 
 const regionsNameWillRemove = [
-    'Indonesia (Central Sumatra)',
-    'West Sumatra',
-    'Indonesia (West Java)',
-    'Indonesia Jakasta',
-    'Indonesia (Papua)',
-    'Indonesia west Papue',
-    'Indonesia (North Sulawesi)',
-    'Indonesia Gorontalo'
+    'China (Heilongjiang)',
+    'China (Inner Mongolia)',
+    'China (Jilin)',
+    'China (Liaoning)',
+    'China (Ningxia)',
+    'China (Shandong)',
+    'China(Tianjin)'
 ];
 
 function main() {
-    groupFeatures = getGroupFeatures(data.features, groupFeatures);
+    // groupFeatures = getGroupFeatures(data.features, groupFeatures);
 
     let finalGeoJson = initGeoJson(); 
     finalGeoJson.features = removeRegions(data.features, regionsNameWillRemove);
 
-    for (let i = 0; i < groupFeatures.length; i++) {
-        const features = groupFeatures[i].features;
+    // for (let i = 0; i < groupFeatures.length; i++) {
+    //     const features = groupFeatures[i].features;
         
-        const finalFeature = mergeAllRegions(features);
-        finalGeoJson.features.push(finalFeature);
-    }
+    //     const finalFeature = mergeAllRegions(features);
+    //     finalGeoJson.features.push(finalFeature);
+    // }
 
     helper.saveFile(fileName, finalGeoJson);
 }
